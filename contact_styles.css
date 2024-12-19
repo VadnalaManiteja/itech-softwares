@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar Styling */
+.navbar {
+    background: navy;
+    color: white;
+}
+.navbar-brand {
+    color: #e0e0e0;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.navbar-brand:hover {
+    color: #e0e0e0;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.navbar-brand small {
+    display: block;
+    font-size: 0.8rem;
+    color: #e0e0e0;
+}
+.nav-link {
+    color: white !important;
+    transition: color 0.3s ease;
+}
+.nav-link:hover {
+    color: #ffcc00 !important;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #007BFF, #0056b3);
+    color: white;
+    padding: 60px 20px; /* Added horizontal padding for responsiveness */
+    text-align: center;
+    /* flex: 1 0 auto; Allows hero section to take up available space */
+}
+
+/* Contact Card Styling */
+.contact-card {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
+    padding: 20px; /* Added padding for better content spacing */
+    background-color: white; /* Ensures consistent background color */
+}
+
+/* Footer Styling */
+footer {
+    background: #343a40;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: auto; /* Ensures the footer stays at the bottom */
+    flex-shrink: 0; /* Prevents the footer from shrinking */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem; /* Adjusted font size for smaller screens */
+    }
+    .hero {
+        padding: 40px 15px; /* Reduced padding for better fit */
+    }
+    .contact-card {
+        margin: 15px; /* Added margin for better spacing */
+    }
+}
+
+.navbar-toggler {
+    border: none; /* Removes the border around the button */
+}
+
+.navbar-toggler-icon {
+    background-color: white; /* Sets the toggler icon to white */
+    border-radius: 3px; /* Optional: Adds slight rounding for a modern look */
+}

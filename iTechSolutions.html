@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Download Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "BnIufLG8yzyto6UiJ",
+      });
+   })();
+</script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container">
+            <a class="navbar-brand">
+                My Software
+                <small>Your trusted software download hub</small>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>iTech Solutions</h1>
+        <p>Empowering your workflow with the best software solutions.</p>
+    </section>
+
+
+    <!-- Products Section -->
+    <section class="container my-5" id="products">
+        <h2 class="text-center mb-4 text-primary fw-bold">Our Products</h2>
+        <div class="row justify-content-center">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="product-card text-center bg-light">
+                        <h3 class="text-dark">iPlus 10</h3>
+                        <p class="text-muted">Software for Supermarkets, Mobile Shops / Computers / Electronics / FMCG
+                            Dealers, Retailers / Wholesalers / Manufacturers/Sanitary /Electrical/Paint shop etc</p>
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal"
+                            data-bs-target="#downloadModal">Download</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-card text-center bg-light">
+                        <h3 class="text-dark">iSales 10</h3>
+                        <p class="text-muted">Software for Supermarkets, Mobile Shops / Computers / Electronics / FMCG
+                            Dealers, Retailers / Wholesalers / Manufacturers/Sanitary /Electrical/Paint
+                            shops/Restaurants etc</p>
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal"
+                            data-bs-target="#downloadModal">Download</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="product-card text-center bg-light">
+                        <h3 class="text-dark">iShop</h3>
+                        <p class="text-muted">Software for Garments/Mens Wear /Kids Wear etc</p>
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal"
+                            data-bs-target="#downloadModal">Download</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-card text-center bg-light">
+                        <h3 class="text-dark">Support Setup</h3>
+                        <p class="text-muted">Essential support files for all the above softwares Need to be installed additionally...</p>
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal"
+                            data-bs-target="#downloadModal">Download</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Download Modal -->
+    <div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="downloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg border-0">
+                <!-- Modal Header -->
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title fw-bold" id="downloadModalLabel">Submit Your Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body p-4">
+                    <form id="downloadForm">
+                        <!-- Name Field -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label fw-semibold">Your Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-person-fill"></i></span>
+                                <input type="text" id="name" name="name" class="form-control"
+                                    placeholder="Enter your name" required>
+                            </div>
+                        </div>
+                        <!-- Mobile Number Field -->
+                        <div class="mb-3">
+                            <label for="mobile" class="form-label fw-semibold">Mobile Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-phone-fill"></i></span>
+                                <input type="tel" id="mobile" name="mobile" class="form-control"
+                                    placeholder="Enter your mobile number" required pattern="[0-9]{10}">
+                            </div>
+                        </div>
+                        <!-- Email Field -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-semibold">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-envelope-fill"></i></span>
+                                <input type="email" id="email" name="email" class="form-control"
+                                    placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        <!-- City Field -->
+                        <div class="mb-3">
+                            <label for="city" class="form-label fw-semibold">City</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-geo-alt-fill"></i></span>
+                                <input type="text" id="city" name="city" class="form-control"
+                                    placeholder="Enter your city" required>
+                            </div>
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill" id="submit" onclick="sendMail()">Submit &
+                                Download</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 My Software. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Handle form submission and simulate download
+        document.getElementById("submit").addEventListener("click", function (e) {
+            e.preventDefault(); // Prevent form from submitting
+
+            // Simple form validation
+            var form = document.getElementById("downloadForm");
+            if (form.checkValidity()) {
+                // Simulate file download
+                var a = document.createElement("a");
+                a.href = "iPlus_Setup.exe"; // Replace with your actual downloadable file URL
+                a.target = "_blank"; // Open the download link in a new tab
+                //a.download = "your_software_file.zip";  Specify the filename to save
+                a.click();
+
+                // Close the modal after download
+                var modalElement = document.getElementById("downloadModal");
+                var modalInstance = bootstrap.Modal.getInstance(modalElement);
+                modalInstance.hide();
+
+                // Optional: Reset the form after download
+                form.reset();
+            } else {
+                // Trigger HTML5 form validation
+                form.reportValidity();
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
