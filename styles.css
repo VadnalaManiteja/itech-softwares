@@ -10,7 +10,7 @@ body {
 
 /* Navbar Styling */
 .navbar {
-    background: navy;
+    background:linear-gradient(to right, #004080, #3366cc);
     color: white;
 }
 .navbar-brand {

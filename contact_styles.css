@@ -9,7 +9,7 @@ body {
 
 /* Navbar Styling */
 .navbar {
-    background: navy;
+    background:linear-gradient(to right, #004080, #3366cc);
     color: white;
 }
 .navbar-brand {
@@ -36,14 +36,14 @@ body {
 }
 
 /* Hero Section */
-.hero {
-    background: linear-gradient(to right, #007BFF, #0056b3);
-    color: white;
-    padding: 60px 20px; /* Added horizontal padding for responsiveness */
-    text-align: center;
-    /* flex: 1 0 auto; Allows hero section to take up available space */
-}
 
+.hero {
+    background: linear-gradient(to right, #004080, #3366cc);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+     /*flex: 1 0 auto; Allow hero to grow and shrink */
+}
 /* Contact Card Styling */
 .contact-card {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
