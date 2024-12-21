@@ -36,8 +36,9 @@
     
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="iTechSolutions.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
                 </ul>
             </div>
         </div>
@@ -60,8 +61,10 @@
                         <h3 class="text-dark">iPlus 10</h3>
                         <p class="text-muted">Software for Supermarkets, Mobile Shops / Computers / Electronics / FMCG
                             Dealers, Retailers / Wholesalers / Manufacturers/Sanitary /Electrical/Paint shop etc</p>
-                        <button class="btn btn-outline-primary" data-bs-toggle="modal"
-                            data-bs-target="#downloadModal">Download</button>
+                            <button class="btn btn-outline-primary" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#downloadModal" 
+                            data-file="iPlus_Setup.exe">Download</button>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -70,8 +73,10 @@
                         <p class="text-muted">Software for Supermarkets, Mobile Shops / Computers / Electronics / FMCG
                             Dealers, Retailers / Wholesalers / Manufacturers/Sanitary /Electrical/Paint
                             shops/Restaurants etc</p>
-                        <button class="btn btn-outline-primary" data-bs-toggle="modal"
-                            data-bs-target="#downloadModal">Download</button>
+                            <button class="btn btn-outline-primary" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#downloadModal" 
+                            data-file="iSales_Setup.exe">Download</button>
                     </div>
                 </div>
             </div>
@@ -79,7 +84,7 @@
                 <div class="col-md-6">
                     <div class="product-card text-center bg-light">
                         <h3 class="text-dark">iShop</h3>
-                        <p class="text-muted">Software for Garments/Mens Wear /Kids Wear<br>etc</p>
+                        <p class="text-muted">Software for Garments/Mens Wear /Kids Wear etc</p>
                         <button class="btn btn-outline-primary" data-bs-toggle="modal"
                             data-bs-target="#downloadModal">Download</button>
                     </div>
@@ -88,8 +93,10 @@
                     <div class="product-card text-center bg-light">
                         <h3 class="text-dark">Support Setup</h3>
                         <p class="text-muted">Essential support files for all the above softwares<br> Need to be installed additionally...</p>
-                        <button class="btn btn-outline-primary" data-bs-toggle="modal"
-                            data-bs-target="#downloadModal">Download</button>
+                        <button class="btn btn-outline-primary" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#downloadModal" 
+                        data-file="Support_Setup.exe">Download</button>
                     </div>
                 </div>
             </div>
@@ -166,25 +173,34 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
+        let fileToDownload = ""; // Variable to store the file URL
+    
+        // Event listener for modal show
+        document.querySelectorAll('button[data-bs-target="#downloadModal"]').forEach(button => {
+            button.addEventListener('click', function () {
+                // Get the file URL from the data-file attribute of the clicked button
+                fileToDownload = this.getAttribute('data-file');
+            });
+        });
+    
         // Handle form submission and simulate download
         document.getElementById("submit").addEventListener("click", function (e) {
             e.preventDefault(); // Prevent form from submitting
-
+    
             // Simple form validation
             var form = document.getElementById("downloadForm");
             if (form.checkValidity()) {
-                // Simulate file download
+                // Simulate file download with the selected file URL
                 var a = document.createElement("a");
-                a.href = "iPlus_Setup.exe"; // Replace with your actual downloadable file URL
+                a.href = fileToDownload; // Use the dynamically set file URL
                 a.target = "_blank"; // Open the download link in a new tab
-                //a.download = "your_software_file.zip";  Specify the filename to save
                 a.click();
-
+    
                 // Close the modal after download
                 var modalElement = document.getElementById("downloadModal");
                 var modalInstance = bootstrap.Modal.getInstance(modalElement);
                 modalInstance.hide();
-
+    
                 // Optional: Reset the form after download
                 form.reset();
             } else {
@@ -192,7 +208,30 @@
                 form.reportValidity();
             }
         });
+        const softwareList = JSON.parse(localStorage.getItem("softwareList"));
+
+        function renderHomeCards() {
+            const productContainer = document.getElementById('products');
+            productContainer.innerHTML = '<h2 class="text-center mb-4 text-primary fw-bold">Our Products</h2><div class="row">';
+
+            softwareList.forEach(software => {
+                productContainer.innerHTML += 
+                    <div class="col-md-6">
+                        <div class="product-card text-center bg-light">
+                            <h3 class="text-dark">${software.name}</h3>
+                            <p class="text-muted">${software.description}</p>
+                            <button class="btn btn-outline-primary" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#downloadModal" 
+                            data-file="${software.file}">Download</button>
+                        </div>
+                    </div>;
+            });
+        }
+        renderHomeCards();
+
     </script>
+    
 
 
 </body>
