@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel | Software Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="contact_styles.css">
+    <link rel="stylesheet" href="admin_styles.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -22,17 +22,20 @@
 
     <!-- Admin Panel -->
     <section class="container my-5">
-        <h2 class="text-center mb-4 text-primary fw-bold">Manage Software</h2>
+        <h2 class="text-center  text-primary fw-bold">Manage Software</h2>
 
         <!-- Add Software Form -->
          
-        <div class="card p-4 mb-5 w-50 text-center">
-            <h4>Add New Software</h4>
-            <input type="text" id="addName" placeholder="Software Name" class="form-control mb-3">
-            <textarea id="addDescription" placeholder="Description" class="form-control mb-3"></textarea>
-            <input type="file" id="addFile" class="form-control mb-3">
-            <button id="addSoftware" class="btn btn-primary w-100">Add Software</button>
-        </div>
+        <section class="d-flex justify-content-center align-items-center ">
+            <div class="card p-4 mb-5 w-50 text-center">
+                <h4>Add New Software</h4>
+                <input type="text" id="addName" placeholder="Software Name" class="form-control mb-3">
+                <textarea id="addDescription" placeholder="Description" class="form-control mb-3"></textarea>
+                <input type="file" id="addFile" class="form-control mb-3">
+                <button id="addSoftware" class="btn btn-primary w-100">Add Software</button>
+            </div>
+        </section>
+        
 
         <!-- Software Cards -->
         <div id="adminCards" class="row g-4"></div>
