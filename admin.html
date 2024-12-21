@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Software Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="contact_styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container">
+            <a class="navbar-brand">iTech Solutions - Admin Panel</a>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin.html">Admin Panel</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Admin Panel -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4 text-primary fw-bold">Manage Software</h2>
+
+        <!-- Add Software Form -->
+         
+        <div class="card p-4 mb-5 w-50 text-center">
+            <h4>Add New Software</h4>
+            <input type="text" id="addName" placeholder="Software Name" class="form-control mb-3">
+            <textarea id="addDescription" placeholder="Description" class="form-control mb-3"></textarea>
+            <input type="file" id="addFile" class="form-control mb-3">
+            <button id="addSoftware" class="btn btn-primary w-100">Add Software</button>
+        </div>
+
+        <!-- Software Cards -->
+        <div id="adminCards" class="row g-4"></div>
+    </section>
+
+    <script>
+        // Initialize Data in Local Storage if Not Present
+        if (!localStorage.getItem("softwareList")) {
+            localStorage.setItem("softwareList", JSON.stringify([
+                { id: 1, name: "iPlus 10", description: "Software for Supermarkets", file: "iPlus_Setup.exe" },
+                { id: 2, name: "iSales 10", description: "Sales Management Software", file: "iSales_Setup.exe" },
+                { id: 3, name: "iShop", description: "Software for Garments", file: "iShop_Setup.exe" },
+                { id: 4, name: "Support Setup", description: "Support files for software", file: "Support_Setup.exe" }
+            ]));
+        }
+
+        // Get Data
+        let softwareList = JSON.parse(localStorage.getItem("softwareList"));
+
+        // Render Admin Cards
+        function renderAdminCards() {
+            const adminCards = document.getElementById('adminCards');
+            adminCards.innerHTML = '';
+
+            softwareList.forEach((software, index) => {
+                adminCards.innerHTML += `
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h4>${software.name}</h4>
+                            <p>${software.description}</p>
+                            <p><strong>File:</strong> ${software.file}</p>
+                            <div class="d-flex">
+                                <button class="btn btn-warning me-2" onclick="showUpdateForm(${index})">Update</button>
+                                <button class="btn btn-danger" onclick="deleteSoftware(${index})">Delete</button>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        // Add Software
+        document.getElementById('addSoftware').addEventListener('click', () => {
+            const name = document.getElementById('addName').value;
+            const description = document.getElementById('addDescription').value;
+            const fileInput = document.getElementById('addFile');
+            const file = fileInput.files[0];
+
+            if (name && description && file) {
+                softwareList.push({
+                    id: softwareList.length + 1,
+                    name,
+                    description,
+                    file: file.name
+                });
+
+                localStorage.setItem("softwareList", JSON.stringify(softwareList));
+                renderAdminCards();
+            } else {
+                alert('Please fill all fields.');
+            }
+        });
+
+        // Delete Software
+        function deleteSoftware(index) {
+            if (confirm('Are you sure?')) {
+                softwareList.splice(index, 1);
+                localStorage.setItem("softwareList", JSON.stringify(softwareList));
+                renderAdminCards();
+            }
+        }
+
+        // Show Update Form
+        function showUpdateForm(index) {
+            const software = softwareList[index];
+            document.getElementById('adminCards').innerHTML = `
+                <div class="col-md-6 mx-auto">
+                    <div class="card p-4">
+                        <h4>Update Software</h4>
+                        <input type="text" id="updateName" value="${software.name}" class="form-control mb-3">
+                        <textarea id="updateDescription" class="form-control mb-3">${software.description}</textarea>
+                        <input type="file" id="updateFile" class="form-control mb-3">
+                        <button class="btn btn-success w-100" onclick="updateSoftware(${index})">Update</button>
+                        <button class="btn btn-secondary mt-2 w-100" onclick="renderAdminCards()">Cancel</button>
+                    </div>
+                </div>`;
+        }
+
+        // Update Software
+        function updateSoftware(index) {
+            const name = document.getElementById('updateName').value;
+            const description = document.getElementById('updateDescription').value;
+            const fileInput = document.getElementById('updateFile');
+            const file = fileInput.files[0];
+
+            if (name && description) {
+                softwareList[index].name = name;
+                softwareList[index].description = description;
+                if (file) {
+                    softwareList[index].file = file.name;
+                }
+
+                localStorage.setItem("softwareList", JSON.stringify(softwareList));
+                renderAdminCards();
+            } else {
+                alert('Fill out all fields.');
+            }
+        }
+
+        renderAdminCards();
+    </script>
+
+</body>
+</html>
